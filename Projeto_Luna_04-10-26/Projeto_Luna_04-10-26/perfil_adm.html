@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Administrator - Luna</title>
+
+    <!-- Importando as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+
+</head>
+
+<body class="pagina-admin pagina-perfil">
+
+  <!--Cabeçalho-->
+  <header>
+  
+        <div class="logo">
+          <img src="imagens/logo.png" width="38"/>
+          Luna
+        </div>
+
+        <div class="text-header">
+          <h1>Meu Perfil</h1>
+          <p>Suas Informações e Atividades no Painel</p>
+        </div>
+
+        <div class="usuario-topo">
+          <img src="imagens/admin.png">
+          <div>
+            <strong>Admin</strong><br>
+            <small>Administrator</small>
+          </div>
+        </div>
+
+  </header>
+
+    <div class="container">
+
+      <!--Sidebar-->
+      <aside class="sidebar">
+
+        <nav>
+          <a href="dashboard.html">
+            <img src="imagens/dashboard_icon.svg">
+            Dashboard
+          </a>
+          <a href="#">
+            <img src="imagens/config_icon.svg">
+            Configurações
+          </a>
+        </nav>
+
+        <div class="rodape-sidebar">
+          <a href="home.html"><img src="imagens/back_icon.svg"> Voltar ao site</a>
+          <a href="#"><img src="imagens/exit_icon.svg"> Sair</a>
+        </div>
+
+      </aside>
+
+      <!--Conteudo principal da pagina-->
+      <main class="conteudo">
+
+        <!--Banner roxo do perfil-->
+        <div class="perfil-banner">
+
+          <div class="banner-capa"></div>
+
+          <div class="banner-corpo">
+            <div class="perfil-info">
+              <img src="imagens/admin.png" alt="Admin">
+              <div class="perfil-nome">
+                <h2>Admin Ártemis</h2>
+                <div class="tags">
+                  <span class="tag-cargo"><img src="imagens/shield_icon.svg"> Administrador Geral</span>
+                  <span class="tag-ativo"><img src="imagens/check_icon.svg"> Ativo</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="perfil-botoes">
+              <button class="btn btn-claro"><img src="imagens/editar_icon.svg"> Editar perfil</button>
+              <button class="btn btn-primario"><img src="imagens/key_icon.svg"> Alterar senha</button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Cards de informações e permissões-->
+        <div class="cards-info">
+          <div class="card">
+            <h3>Informações Pessoais</h3>
+            
+            <div class="dado">
+              <div class="dado-icone">
+                <img src="imagens/grayEmail_icon.svg">
+              </div>
+              <div>
+                <label>Email</label>
+                <span>admin@artemis.app</span>
+              </div>
+            </div>
+
+            <div class="dado">
+              <div class="dado-icone">
+                <img src="imagens/grayPhone_icon.svg">
+              </div>
+              <div>
+                <label>Telefone</label>
+                <span>+55 xx xxxxx-xxxx</span>
+              </div>
+            </div>
+
+            <div class="dado">
+              <div class="dado-icone">
+                <img src="imagens/grayShield_icon.svg">
+              </div>
+              <div>
+                <label>Cargo</label>
+                <span>Administrator Geral</span>
+              </div>
+            </div>
+
+            <div class="dado">
+              <div class="dado-icone">
+                <img src="imagens/grayLocal_icon.svg">
+              </div>
+              <div>
+                <label>Localização</label>
+                <span>Espírito Santo, BR</span>
+              </div>
+            </div>
+
+            <div class="dado">
+              <div class="dado-icone">
+                <img src="imagens/grayCalendar_icon.svg" alt="">
+              </div>
+              <div>
+                <label>Membro Desde</label>
+                <span>Janeiro de 2025</span>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <h3>Permissões</h3>
+
+            <div class="permissao">
+              <span>Gerenciar Usuários</span>
+              <span class="permitido"><img src="imagens/check_icon.svg">Permitido</span>
+            </div>
+
+            <div class="permissao">
+              <span>Acessar Dados Financeiros</span>
+              <span class="permitido"><img src="imagens/check_icon.svg">Permitido</span>
+            </div>
+
+            <div class="permissao">
+              <span>Enviar Notificações em Massa</span>
+              <span class="permitido"><img src="imagens/check_icon.svg">Permitido</span>
+            </div>
+
+            <div class="permissao">
+              <span>Modificar Configurações do Sistema</span>
+              <span class="permitido"><img src="imagens/check_icon.svg">Permitido</span>
+            </div>
+
+            <div class="permissao">
+              <span>Exportar Relatórios</span>
+              <span class="permitido"><img src="imagens/check_icon.svg">Permitido</span>
+            </div>
+
+            <div class="permissao">
+              <span>Banir Usuários</span>
+              <span class="permitido"><img src="imagens/check_icon.svg">Permitido</span>
+            </div>
+
+            <div class="permissao">
+              <span>Acabar com Tudo</span>
+              <span class="nao-permitido"><img src="imagens/no-check_icon.svg">Não Permitido</span>
+            </div>
+
+            <div class="permissao">
+              <span>Ser Triste!</span>
+              <span class="nao-permitido"><img src="imagens/no-check_icon.svg">Não Permitido</span>
+            </div>
+          </div>
+
+      </main>
+
+    </div>
+    
+</body>
+</html>

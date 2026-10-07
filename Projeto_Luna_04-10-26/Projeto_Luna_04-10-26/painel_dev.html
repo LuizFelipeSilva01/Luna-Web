@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Desenvolvedor - Luna</title>
+
+    <!-- Importando as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="pagina-dev">
+
+
+<!-- adicionando o firebase -->
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAVLFnvRVCKU2DmrW30-Cl6hZ22kxCM22g",
+    authDomain: "luna-d050c.firebaseapp.com",
+    databaseURL: "https://luna-d050c-default-rtdb.firebaseio.com",
+    projectId: "luna-d050c",
+    storageBucket: "luna-d050c.firebasestorage.app",
+    messagingSenderId: "557586514299",
+    appId: "1:557586514299:web:63633cc25e322c1f73bdde",
+    measurementId: "G-XM4E1LV396"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+
+<div class="container">
+    <div class="lado-esquerdo">
+        <header>
+            <a href="home.html" class="voltar">
+                <img src="imagens/voltar.svg"/>
+                Voltar para página inicial
+            </a>
+        </header>
+
+    <main class="conteudo-principal">
+        <div class="logo">
+            <img src="imagens/logo2.png">
+            <span>Luna</span>
+        </div>
+
+    <h2>Painel do Desenvolvedor</h2>
+    <p>Entre na sua conta para acessar o painel administrativo.</p>
+
+    <form action="dashboard.html" method="post">
+        Email<br>
+        <input type="text" name="email" id="email"  placeholder="seu@email.com">
+
+        <br>Senha<br>
+        <input type="password" name="senha" id="senha" placeholder="sua senha">
+        
+        <div class="opcoes">
+            <label class="lembrar">
+                <input type="checkbox">
+                <span>Lembrar de mim</span>
+            </label>
+
+          <a href="#">Esqueci minha senha</a>
+        </div>
+
+        <br><input type="submit" value="Entrar">
+    </form>
+
+    </main>
+    </div>
+
+    <div class="lado-direito">
+        <img src="imagens/background.png">
+    </div>
+</div>
+    
+</body>
+</html>
