@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar senha - Luna</title>
+
+    <!-- Importando as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <!-- conectando o firebase -->
+    <script type="module" src="firebase/proteger.js"></script>
+    <script src="js/menu.js" defer></script>
+    <script src="js/senha.js" defer></script>
+</head>
+
+<body class="pagina-admin pagina-config pagina-senha">
+
+  <!--Cabeçalho-->
+  <header>
+    <button class="btn-menu" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+    <div class="logo">
+      <img src="imagens/logo.png" width="38"/>
+      Luna
+    </div>
+
+    <div class="text-header">
+      <h1>Alterar senha</h1>
+      <p>Mantenha sua conta protegida</p>
+    </div>
+
+    <div class="usuario-topo">
+      <img src="imagens/admin.png">
+      <div>
+        <strong>Admin</strong><br>
+        <small>Administrador</small>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!--Sidebar-->
+    <aside class="sidebar">
+      <nav>
+        <a href="dashboard.html">
+          <img src="imagens/dashboard_icon.svg">
+          Dashboard
+        </a>
+        <a href="config_perfil.html" class="ativo">
+          <img src="imagens/config_icon.svg">
+          Configurações
+        </a>
+      </nav>
+
+      <div class="rodape-sidebar">
+        <a href="home.html"><img src="imagens/back_icon.svg"> Voltar ao site</a>
+        <a href="#" id="btn-sair"><img src="imagens/exit_icon.svg"> Sair</a>
+      </div>
+    </aside>
+
+    <!--Conteudo principal da pagina-->
+    <main class="conteudo">
+      <div class="senha-pagina">
+
+        <a href="config_seguranca.html" class="voltar">
+          <img src="imagens/voltar.svg" alt="">
+          Voltar para o perfil
+        </a>
+
+        <div class="senha-grade">
+
+          <!-- Formulário -->
+          <form class="card senha-form" id="form-senha" novalidate>
+            <div class="senha-cabecalho">
+              <span class="icone-quadro"><img src="imagens/key_icon.svg" alt=""></span>
+              <div>
+                <h3>Nova senha</h3>
+                <p>Última alteração há 3 meses</p>
+              </div>
+            </div>
+
+            <div class="campo campo-divisor">
+              <label for="senha-atual">Senha atual</label>
+              <div class="campo-envoltorio">
+                <input type="password" id="senha-atual" placeholder="Digite sua senha atual" autocomplete="current-password">
+                <button type="button" class="ver-senha" aria-label="Mostrar senha" aria-pressed="false"><img src="imagens/olho_icon.svg" alt=""></button>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="nova-senha">Nova senha</label>
+              <div class="campo-envoltorio">
+                <input type="password" id="nova-senha" placeholder="Crie uma senha forte" autocomplete="new-password">
+                <button type="button" class="ver-senha" aria-label="Mostrar senha" aria-pressed="false"><img src="imagens/olho_icon.svg" alt=""></button>
+              </div>
+            </div>
+
+            <div class="campo">
+              <label for="confirma-senha">Confirme a nova senha</label>
+              <div class="campo-envoltorio">
+                <input type="password" id="confirma-senha" placeholder="Digite a senha novamente" autocomplete="new-password">
+                <button type="button" class="ver-senha" aria-label="Mostrar senha" aria-pressed="false"><img src="imagens/olho_icon.svg" alt=""></button>
+              </div>
+            </div>
+
+            <div class="senha-acoes">
+              <button type="submit" class="btn btn-primario">
+                <img src="imagens/shield_icon.svg" alt="">
+                Atualizar senha
+              </button>
+              <a href="config_seguranca.html" class="link-cancelar">Cancelar</a>
+            </div>
+          </form>
+
+          <!-- Requisitos e dicas -->
+          <aside class="senha-lateral">
+            <section class="card">
+              <h3><img src="imagens/shield_icon.svg" alt=""> Requisitos da senha</h3>
+              <ul class="requisitos" id="requisitos">
+                <li data-regra="tamanho"><img src="imagens/no-check_icon.svg" alt="">Pelo menos 8 caracteres</li>
+                <li data-regra="maiuscula"><img src="imagens/no-check_icon.svg" alt="">Uma letra maiúscula</li>
+                <li data-regra="minuscula"><img src="imagens/no-check_icon.svg" alt="">Uma letra minúscula</li>
+                <li data-regra="numero"><img src="imagens/no-check_icon.svg" alt="">Um número</li>
+                <li data-regra="especial"><img src="imagens/no-check_icon.svg" alt="">Um caractere especial (!@#$...)</li>
+              </ul>
+            </section>
+
+            <section class="card card-lilas dicas">
+              <span class="icone-quadro"><img src="imagens/cadeado_icon.svg" alt=""></span>
+              <div>
+                <h3>Dicas de segurança</h3>
+                <p>Não reutilize senhas de outras contas.</p>
+                <p>Evite informações pessoais óbvias.</p>
+                <p>Use um gerenciador de senhas.</p>
+                <p>Ative a autenticação em dois fatores.</p>
+              </div>
+            </section>
+          </aside>
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

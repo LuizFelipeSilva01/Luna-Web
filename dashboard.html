@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Luna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- conectando o firebase -->
+    <script type="module" src="firebase/proteger.js"></script>
+    <script src="js/menu.js" defer></script>
+</head>
+
+<body class="pagina-admin pagina-dashboard">
+
+  <header>
+    <button class="btn-menu" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  
+        <div class="logo">
+          <img src="imagens/logo.png" width="38"/>
+          Luna
+        </div>
+
+        <div class="text-header">
+          <h1>Meu Perfil</h1>
+          <p>Suas Informações e Atividades no Painel</p>
+        </div>
+
+        <a class="usuario-topo" href="perfil_adm.html">
+          <img src="imagens/admin.png">
+          <div>
+            <strong>Admin</strong><br>
+            <small>Administrator</small>
+          </div>
+        </a>
+
+  </header>
+
+  <div class="container">
+
+    <!--Sidebar-->
+    <aside class="sidebar">
+
+      <nav>
+        <a href="dashboard.html" class="ativo">
+          <img src="imagens/dashboard_icon.svg">
+          Dashboard
+        </a>
+        <a href="config_perfil.html">
+          <img src="imagens/config_icon.svg">
+          Configurações
+        </a>
+      </nav>
+
+      <div class="rodape-sidebar">
+        <a href="home.html"><img src="imagens/back_icon.svg"> Voltar ao site</a>
+        <a href="#" id="btn-sair"><img src="imagens/exit_icon.svg"> Sair</a>      
+      </div>
+
+    </aside>
+
+    <!--Conteudo principal da pagina-->
+    <main class="conteudo">
+
+<div class="cards">
+
+<div class="card card-lilas">
+<span class="card-title">Usuários totais</span>
+<div class="card-row">
+<span class="number">12.458</span>
+<span class="percent">+12.5%</span>
+</div>
+</div>
+
+<div class="card card-lilas">
+<span class="card-title">Usuários ativos</span>
+<div class="card-row">
+<span class="number">7.892</span>
+<span class="percent">+8.2%</span>
+</div>
+</div>
+
+<div class="card card-lilas">
+<span class="card-title">Novos usuários</span>
+<div class="card-row">
+<span class="number">1.234</span>
+<span class="percent">+15.7%</span>
+</div>
+</div>
+
+<div class="card card-lilas">
+<span class="card-title">Retenção (30d)</span>
+<div class="card-row">
+<span class="number">68.4%</span>
+<span class="percent">+6.7%</span>
+</div>
+</div>
+
+</div>
+
+<div class="charts">
+
+<div class="card card-lilas chart-card">
+<div class="chart-title">
+Crescimento de usuários
+</div>
+
+<div class="area-linha">
+<div class="numeros">
+<span>2200</span>
+<span>1650</span>
+<span>1100</span>
+<span>550</span>
+<span>0</span>
+</div>
+
+<div class="area-grafico">
+<div class="linha-grade linha1"></div>
+<div class="linha-grade linha2"></div>
+<div class="linha-grade linha3"></div>
+<div class="linha-grade linha4"></div>
+<div class="linha-grade linha5"></div>
+
+<svg class="grafico-linha" viewBox="0 0 500 133" preserveAspectRatio="none">
+<defs>
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#8a55ed" stop-opacity=".17"/>
+<stop offset="100%" stop-color="#8a55ed" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<path d="M0 94 L100 74 L200 56 L300 38 L400 20 L500 4 L500 133 L0 133 Z" fill="url(#area)"/>
+<path d="M0 94 L100 74 L200 56 L300 38 L400 20 L500 4" fill="none" stroke="#7939ed" stroke-width="1.6"/>
+</svg>
+
+<div class="datas">
+<span>01/04</span>
+<span>08/04</span>
+<span>15/04</span>
+<span>22/04</span>
+<span>29/04</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card card-lilas chart-card platform-card">
+<div class="chart-title">
+Usuários por plataforma
+</div>
+
+<div class="grafico"></div>
+
+<div class="linha">
+<div class="nome">
+<span class="bolinha android"></span>
+Android
+</div>
+<span>72%</span>
+</div>
+
+<div class="linha">
+<div class="nome">
+<span class="bolinha ios"></span>
+iOS
+</div>
+<span>26%</span>
+</div>
+
+<div class="linha">
+<div class="nome">
+<span class="bolinha web"></span>
+Web
+</div>
+<span>2%</span>
+</div>
+
+</div>
+
+</div>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

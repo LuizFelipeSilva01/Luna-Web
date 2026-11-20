@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Desenvolvedor - Luna</title>
+
+    <!-- Importando as fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="pagina-dev">
+
+<script type="module">
+  import { auth, UID_ADMIN } from "./firebase/firebase.js";
+  import { signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+  const form = document.getElementById("form-login");
+  const erro = document.getElementById("erro");
+
+   // mensagem que vem do proteger.js quando um não-admin tenta entrar
+  if (new URLSearchParams(window.location.search).get("motivo") === "nao-adm") {
+    erro.textContent = "Você não pode entrar porque não é administrador.";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    erro.textContent = "";
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+
+    try {
+      const cred = await signInWithEmailAndPassword(auth, email, senha);
+
+      if (cred.user.uid !== UID_ADMIN) {
+        await signOut(auth);
+        erro.textContent = "Você não pode entrar porque não é administrador.";
+        return;
+      }
+
+      window.location.href = "dashboard.html";
+    } catch (err) {
+      console.error(err.code);
+      erro.textContent = "E-mail ou senha incorretos.";
+    }
+  });
+</script>
+
+<div class="container">
+    <div class="lado-esquerdo">
+        <header>
+            <a href="home.html" class="voltar">
+                <img src="imagens/voltar.svg"/>
+                Voltar para página inicial
+            </a>
+        </header>
+
+    <main class="conteudo-principal">
+        <div class="logo">
+            <img src="imagens/logo2.png">
+            <span>Luna</span>
+        </div>
+
+    <h2>Painel do Desenvolvedor</h2>
+    <p>Entre na sua conta para acessar o painel administrativo.</p>
+
+   
+    <form id="form-login">
+    Email<br>
+    <input type="text" name="email" id="email" placeholder="seu@email.com" required>
+
+    <br>Senha<br>
+    <input type="password" name="senha" id="senha" placeholder="sua senha" required>
+
+    <div class="opcoes">
+        <label class="lembrar">
+            <input type="checkbox">
+            <span>Lembrar de mim</span>
+        </label>
+        <a href="#">Esqueci minha senha</a>
+    </div>
+
+    <p id="erro" style="color:red;"></p>
+
+    <br><input type="submit" value="Entrar">
+</form>
+
+    </main>
+    </div>
+
+    <div class="lado-direito">
+        <img src="imagens/background.png">
+    </div>
+</div>
+    
+</body>
+</html>
