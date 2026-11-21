@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -14,14 +15,16 @@
     />
 
     <link rel="stylesheet" href="styles.css" />
-    <!-- conectando o firebase -->
+
+    <!-- Conectando o Firebase -->
     <script type="module" src="firebase/proteger.js"></script>
+    <script type="module" src="js/perfil.js"></script>
     <script src="js/menu.js" defer></script>
 </head>
 
 <body class="pagina-admin pagina-config">
 
-  <!--Cabeçalho-->
+  <!-- Cabeçalho -->
   <header>
     <button class="btn-menu" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
 
@@ -47,7 +50,7 @@
 
   <div class="container">
 
-    <!--Sidebar-->
+    <!-- Sidebar -->
     <aside class="sidebar">
 
       <nav>
@@ -68,7 +71,7 @@
 
     </aside>
 
-    <!--Conteudo principal da pagina-->
+    <!-- Conteúdo principal da página -->
     <main class="conteudo">
 
       <div class="config-layout">
@@ -97,6 +100,11 @@
             <p>Suas informações pessoais</p>
           </div>
 
+          <!-- Mensagem de carregamento -->
+          <p id="carregando-perfil" hidden>
+            Carregando informações do perfil...
+          </p>
+
           <div class="foto-perfil">
             <img src="imagens/admin.png" alt="Foto do perfil">
             <div>
@@ -116,6 +124,11 @@
           </div>
 
           <div class="campo">
+            <label for="telefone">Telefone</label>
+            <input type="text" id="telefone" name="telefone">
+          </div>
+
+          <div class="campo">
             <label for="cargo">Cargo</label>
             <input type="text" id="cargo" name="cargo">
           </div>
@@ -126,7 +139,7 @@
           </div>
 
           <div class="config-acoes">
-            <button type="button" class="btn btn-primario">
+            <button type="button" class="btn btn-primario" id="salvar-perfil">
               <img src="imagens/salvar_icon.svg">
               Salvar alterações
             </button>
