@@ -25,6 +25,38 @@ const mensagem = document.getElementById("carregando-perfil");
 // Caminho onde os dados ficam salvos
 const perfil = ref(db, "perfil_admin");
 
+// Formata o telefone com DDD
+function formatarTelefone(valor) {
+
+    const numeros = valor.replace(/\D/g, "").slice(0, 11);
+
+    if (numeros.length === 0) {
+        return "";
+    }
+
+    if (numeros.length <= 2) {
+        return "(" + numeros + (numeros.length === 2 ? ")" : "");
+    }
+
+    const ddd = numeros.slice(0, 2);
+    const numero = numeros.slice(2);
+
+    if (numero.length <= 4) {
+        return `(${ddd}) ${numero}`;
+    }
+
+    if (numero.length <= 8) {
+        return `(${ddd}) ${numero.slice(0, 4)}-${numero.slice(4)}`;
+    }
+
+    return `(${ddd}) ${numero.slice(0, 5)}-${numero.slice(5)}`;
+}
+
+// Formata o telefone enquanto o usuário digita
+telefone.addEventListener("input", () => {
+    telefone.value = formatarTelefone(telefone.value);
+});
+
 // Verifica se está no modo apresentação
 const parametros = new URLSearchParams(window.location.search);
 const modoApresentacao = parametros.has("apresentacao");
@@ -60,7 +92,7 @@ onAuthStateChanged(auth, async (usuario) => {
             // Preenche os campos com os dados encontrados
             nome.value = dados.nome || "";
             email.value = dados.email || usuario.email || "";
-            telefone.value = dados.telefone || "";
+            telefone.value = formatarTelefone(dados.telefone || "");
             cargo.value = dados.cargo || "";
             localizacao.value = dados.localizacao || "";
 

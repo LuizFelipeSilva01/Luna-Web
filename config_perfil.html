@@ -58,6 +58,7 @@
           <img src="imagens/dashboard_icon.svg">
           Dashboard
         </a>
+
         <a href="config_perfil.html" class="ativo">
           <img src="imagens/config_icon.svg">
           Configurações
@@ -82,10 +83,12 @@
             <img src="imagens/perfil_icon.svg">
             Perfil
           </a>
+
           <a href="config_seguranca.html">
             <img src="imagens/seguranca_icon.svg">
             Segurança
           </a>
+
           <a href="config_sistema.html">
             <img src="imagens/sistema_icon.svg">
             Sistema
@@ -125,7 +128,14 @@
 
           <div class="campo">
             <label for="telefone">Telefone</label>
-            <input type="text" id="telefone" name="telefone">
+            <input
+              type="tel"
+              id="telefone"
+              name="telefone"
+              placeholder="(XX) XXXXX-XXXX"
+              maxlength="15"
+              inputmode="numeric"
+            >
           </div>
 
           <div class="campo">
