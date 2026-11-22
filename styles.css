@@ -194,6 +194,10 @@ header {
   color: var(--cor-sucesso-texto);
 }
 
+.percent.tag-negativo {
+  background: #fde2e2;
+}
+
 .tag-negativo {
   color: #b11111;
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,9 +8,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    
+    <!-- JS para deixar o site dinamico e para funcionamento dos gráficos -->
+    <script type="module" src="js/dashboard.js"></script>
+    <script src="js/menu.js" defer></script>
+
     <!-- conectando o firebase -->
     <script type="module" src="firebase/proteger.js"></script>
-    <script src="js/menu.js" defer></script>
+    <script type="module" src="firebase/perfil_adm.js"></script>
 </head>
 
 <body class="pagina-admin pagina-dashboard">
@@ -41,7 +45,7 @@
 
   <div class="container">
 
-    <!-- Sidebar -->
+    <!--Sidebar-->
     <aside class="sidebar">
 
       <nav>
@@ -49,7 +53,7 @@
           <img src="imagens/dashboard_icon.svg">
           Dashboard
         </a>
-        <a href="config_perfil.html?apresentacao">
+        <a href="config_perfil.html">
           <img src="imagens/config_icon.svg">
           Configurações
         </a>
@@ -62,127 +66,95 @@
 
     </aside>
 
-    <!-- Conteúdo principal da página -->
-    <main class="conteudo">
+    <!--Conteudo principal da pagina-->
+<main class="conteudo">
 
-      <div class="cards">
-
-        <div class="card card-lilas">
-          <span class="card-title">Usuários totais</span>
-          <div class="card-row">
-            <span class="number">12.458</span>
-            <span class="percent">+12.5%</span>
-          </div>
-        </div>
-
-        <div class="card card-lilas">
-          <span class="card-title">Usuários ativos</span>
-          <div class="card-row">
-            <span class="number">7.892</span>
-            <span class="percent">+8.2%</span>
-          </div>
-        </div>
-
-        <div class="card card-lilas">
-          <span class="card-title">Novos usuários</span>
-          <div class="card-row">
-            <span class="number">1.234</span>
-            <span class="percent">+15.7%</span>
-          </div>
-        </div>
-
-        <div class="card card-lilas">
-          <span class="card-title">Retenção (30d)</span>
-          <div class="card-row">
-            <span class="number">68.4%</span>
-            <span class="percent">+6.7%</span>
-          </div>
-        </div>
-
+  <div class="cards">
+    <div class="card card-lilas">
+      <span class="card-title">Usuários totais</span>
+      <div class="card-row">
+        <span class="number" id="kpi-total">—</span>
+        <span class="percent" id="kpi-total-pct" hidden></span>
       </div>
+    </div>
 
-      <div class="charts">
-
-        <div class="card card-lilas chart-card">
-          <div class="chart-title">
-            Crescimento de usuários
-          </div>
-
-          <div class="area-linha">
-            <div class="numeros">
-              <span>2200</span>
-              <span>1650</span>
-              <span>1100</span>
-              <span>550</span>
-              <span>0</span>
-            </div>
-
-            <div class="area-grafico">
-              <div class="linha-grade linha1"></div>
-              <div class="linha-grade linha2"></div>
-              <div class="linha-grade linha3"></div>
-              <div class="linha-grade linha4"></div>
-              <div class="linha-grade linha5"></div>
-
-              <svg class="grafico-linha" viewBox="0 0 500 133" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#8a55ed" stop-opacity=".17"/>
-                    <stop offset="100%" stop-color="#8a55ed" stop-opacity="0"/>
-                  </linearGradient>
-                </defs>
-                <path d="M0 94 L100 74 L200 56 L300 38 L400 20 L500 4 L500 133 L0 133 Z" fill="url(#area)"/>
-                <path d="M0 94 L100 74 L200 56 L300 38 L400 20 L500 4" fill="none" stroke="#7939ed" stroke-width="1.6"/>
-              </svg>
-
-              <div class="datas">
-                <span>01/04</span>
-                <span>08/04</span>
-                <span>15/04</span>
-                <span>22/04</span>
-                <span>29/04</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-lilas chart-card platform-card">
-          <div class="chart-title">
-            Usuários por plataforma
-          </div>
-
-          <div class="grafico"></div>
-
-          <div class="linha">
-            <div class="nome">
-              <span class="bolinha android"></span>
-              Android
-            </div>
-            <span>72%</span>
-          </div>
-
-          <div class="linha">
-            <div class="nome">
-              <span class="bolinha ios"></span>
-              iOS
-            </div>
-            <span>26%</span>
-          </div>
-
-          <div class="linha">
-            <div class="nome">
-              <span class="bolinha web"></span>
-              Web
-            </div>
-            <span>2%</span>
-          </div>
-
-        </div>
-
+    <div class="card card-lilas">
+      <span class="card-title">Usuários ativos (30d)</span>
+      <div class="card-row">
+        <span class="number" id="kpi-ativos">—</span>
+        <span class="percent" id="kpi-ativos-pct" hidden></span>
       </div>
+    </div>
 
-    </main>
+    <div class="card card-lilas">
+      <span class="card-title">Novos usuários (30d)</span>
+      <div class="card-row">
+        <span class="number" id="kpi-novos">—</span>
+        <span class="percent" id="kpi-novos-pct" hidden></span>
+      </div>
+    </div>
 
+    <div class="card card-lilas">
+      <span class="card-title">Retenção (30d)</span>
+      <div class="card-row">
+        <span class="number" id="kpi-retencao">—</span>
+        <span class="percent" id="kpi-retencao-pct" hidden></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="card card-lilas chart-card">
+      <div class="chart-title">Crescimento de usuários</div>
+
+      <div class="area-linha">
+        <div class="numeros" id="eixo-y"></div>
+
+        <div class="area-grafico">
+          <div class="linha-grade linha1"></div>
+          <div class="linha-grade linha2"></div>
+          <div class="linha-grade linha3"></div>
+          <div class="linha-grade linha4"></div>
+          <div class="linha-grade linha5"></div>
+
+          <svg class="grafico-linha" viewBox="0 0 500 133" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#8a55ed" stop-opacity=".17"/>
+                <stop offset="100%" stop-color="#8a55ed" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path id="area-path" d="" fill="url(#area)"/>
+            <path id="linha-path" d="" fill="none" stroke="#7939ed"
+                  stroke-width="1.6" vector-effect="non-scaling-stroke"/>
+          </svg>
+
+          <div class="datas" id="eixo-x"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-lilas chart-card platform-card">
+      <div class="chart-title">Usuários por plataforma</div>
+
+      <div class="grafico" id="donut"></div>
+
+      <div class="linha">
+        <div class="nome"><span class="bolinha android"></span>Android</div>
+        <span id="pct-android">0%</span>
+      </div>
+      <div class="linha">
+        <div class="nome"><span class="bolinha ios"></span>iOS</div>
+        <span id="pct-ios">0%</span>
+      </div>
+      <div class="linha">
+        <div class="nome"><span class="bolinha web"></span>Web</div>
+        <span id="pct-web">0%</span>
+      </div>
+    </div>
+  </div>
+
+</main>
   </div>
 
 </body>
