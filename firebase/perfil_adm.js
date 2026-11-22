@@ -1,4 +1,6 @@
-import { auth } from "./firebase.js";
+
+import { auth, db } from "./firebase.js";
+import { ref, get } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 // Função ajudante: escreve um texto dentro do elemento que tem aquele id
@@ -7,26 +9,46 @@ function escrever(id, texto) {
   if (el) el.textContent = texto;
 }
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   if (!user) return; // o proteger.js já cuida de mandar para o login
 
-  // Nome: usa o nome da conta; se não tiver, usa a parte do e-mail antes do @
-  const nome = user.displayName || user.email.split("@")[0];
+  try {
+    // Busca os dados salvos nas configurações
+    const perfilRef = ref(db, "perfil_admin");
+    const resultado = await get(perfilRef);
+    const dados = resultado.exists() ? resultado.val() : {};
 
-  // "Membro desde": data de criação da conta, em português
-  const criada = new Date(user.metadata.creationTime);
-  let membroDesde = criada.toLocaleDateString("pt-BR", { month: "long", year: "numeric" });
-  membroDesde = membroDesde.charAt(0).toUpperCase() + membroDesde.slice(1);
+    // Nome e informações salvas no perfil
+    const nome = dados.nome || user.displayName || "Admin";
+    const email = dados.email || user.email;
+    const telefone = dados.telefone || "Não informado";
+    const cargo = dados.cargo || "Administrador Geral";
+    const localizacao = dados.localizacao || "Não informado";
 
-  // Escrevendo na página
-  escrever("topo-nome", nome);
-  escrever("perfil-nome", nome);
-  escrever("info-email", user.email);
-  escrever("info-membro", membroDesde);
+    // "Membro desde": data de criação da conta, em português
+    const criada = new Date(user.metadata.creationTime);
+    let membroDesde = criada.toLocaleDateString("pt-BR", { month: "long", year: "numeric" });
+    membroDesde = membroDesde.charAt(0).toUpperCase() + membroDesde.slice(1);
 
-  // Foto: só troca se a conta tiver uma foto
-  if (user.photoURL) {
-    document.getElementById("topo-foto").src = user.photoURL;
-    document.getElementById("perfil-foto").src = user.photoURL;
+    // Escrevendo na página
+    escrever("topo-nome", nome);
+    escrever("perfil-nome", nome);
+    escrever("topo-cargo", "Administrador");
+    escrever("perfil-cargo", cargo);
+    escrever("info-email", email);
+    escrever("info-telefone", telefone);
+    escrever("info-cargo", cargo);
+    escrever("info-localizacao", localizacao);
+    escrever("info-membro", membroDesde);
+
+    // Foto: só troca se a conta tiver uma foto
+    if (user.photoURL) {
+      document.getElementById("topo-foto").src = user.photoURL;
+      document.getElementById("perfil-foto").src = user.photoURL;
+    }
+
+  } catch (erro) {
+    console.log("Erro ao carregar perfil:", erro);
+    alert("Não foi possível carregar as informações do perfil.");
   }
 });
