@@ -2042,4 +2042,22 @@ img {
   .senha-acoes .btn {
     justify-content: center;
   }
+
+  /* Mensagem de erro/sucesso da página alterar senha */
+  .mensagem-senha {
+    margin: 8px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .mensagem-senha.erro {
+    color: var(--cor-negado);
+  }
+
+  .mensagem-senha.sucesso {
+    padding: 10px 14px;
+    border-radius: var(--raio-botao);
+    background: var(--cor-sucesso-fundo);
+    color: var(--cor-sucesso-texto);
+  }
 }

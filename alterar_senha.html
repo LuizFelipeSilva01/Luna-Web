@@ -17,7 +17,7 @@
     <!-- conectando o firebase -->
     <script type="module" src="firebase/proteger.js"></script>
     <script src="js/menu.js" defer></script>
-    <script src="js/senha.js" defer></script>
+    <script type="module" src="js/senha.js"></script>
 </head>
 
 <body class="pagina-admin pagina-config pagina-senha">
@@ -83,7 +83,6 @@
               <span class="icone-quadro"><img src="imagens/key_icon.svg" alt=""></span>
               <div>
                 <h3>Nova senha</h3>
-                <p>Última alteração há 3 meses</p>
               </div>
             </div>
 
@@ -110,6 +109,8 @@
                 <button type="button" class="ver-senha" aria-label="Mostrar senha" aria-pressed="false"><img src="imagens/olho_icon.svg" alt=""></button>
               </div>
             </div>
+
+            <p id="mensagem-senha" class="mensagem-senha" role="status"></p>
 
             <div class="senha-acoes">
               <button type="submit" class="btn btn-primario">
