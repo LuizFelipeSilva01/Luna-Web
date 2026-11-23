@@ -2042,22 +2042,55 @@ img {
   .senha-acoes .btn {
     justify-content: center;
   }
+}
 
-  /* Mensagem de erro/sucesso da página alterar senha */
-  .mensagem-senha {
-    margin: 8px 0 0;
-    font-size: 14px;
-    font-weight: 600;
-  }
+/* Mensagem de erro/sucesso da página alterar senha */
+.mensagem-senha {
+  margin: 8px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
 
-  .mensagem-senha.erro {
-    color: var(--cor-negado);
-  }
+.mensagem-senha.erro {
+  color: var(--cor-negado);
+}
 
-  .mensagem-senha.sucesso {
-    padding: 10px 14px;
-    border-radius: var(--raio-botao);
-    background: var(--cor-sucesso-fundo);
-    color: var(--cor-sucesso-texto);
+.mensagem-senha.sucesso {
+  padding: 10px 14px;
+  border-radius: var(--raio-botao);
+  background: var(--cor-sucesso-fundo);
+  color: var(--cor-sucesso-texto);
+}
+
+/* Select (cargo e localização) com o mesmo visual dos inputs */
+.campo select {
+  width: 100%;
+  height: 40px;
+  padding: 0 40px 0 14px;
+  border: 1px solid #e0d6f2;
+  border-radius: 8px;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%233d2b6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  color: var(--cor-menu);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.campo select:focus {
+  border-color: var(--cor-foco);
+  box-shadow: var(--anel-foco);
+}
+
+/* Celular: mesma regra que você já usa nos inputs (evita zoom no iPhone) */
+@media (max-width: 900px) {
+  .campo select {
+    height: 44px;
+    font-size: 16px;
   }
 }

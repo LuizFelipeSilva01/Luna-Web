@@ -1,4 +1,3 @@
-
 // Importando o Firebase
 import { auth, db, UID_ADMIN } from "../firebase/firebase.js";
 
@@ -24,6 +23,72 @@ const mensagem = document.getElementById("carregando-perfil");
 
 // Caminho onde os dados ficam salvos
 const perfil = ref(db, "perfil_admin");
+
+// Opções dos campos de seleção (para mudar as opções, edite aqui)
+const CARGOS = [
+    "Administrador",
+    "Gerente",
+    "Coordenador",
+    "Desenvolvedor",
+    "Designer",
+    "Analista",
+    "Suporte"
+];
+
+const ESTADOS = [
+    "Acre - AC", "Alagoas - AL", "Amapá - AP", "Amazonas - AM", "Bahia - BA",
+    "Ceará - CE", "Distrito Federal - DF", "Espírito Santo - ES", "Goiás - GO",
+    "Maranhão - MA", "Mato Grosso - MT", "Mato Grosso do Sul - MS",
+    "Minas Gerais - MG", "Pará - PA", "Paraíba - PB", "Paraná - PR",
+    "Pernambuco - PE", "Piauí - PI", "Rio de Janeiro - RJ",
+    "Rio Grande do Norte - RN", "Rio Grande do Sul - RS", "Rondônia - RO",
+    "Roraima - RR", "Santa Catarina - SC", "São Paulo - SP", "Sergipe - SE",
+    "Tocantins - TO"
+];
+
+// Cria as opções dentro de um <select>
+function preencherSelect(select, opcoes) {
+
+    // Primeira opção: "Selecione...", com valor vazio
+    const padrao = document.createElement("option");
+    padrao.value = "";
+    padrao.textContent = "Selecione...";
+    padrao.disabled = true;
+    padrao.selected = true;
+    select.appendChild(padrao);
+
+    opcoes.forEach((texto) => {
+        const opcao = document.createElement("option");
+        opcao.value = texto;
+        opcao.textContent = texto;
+        select.appendChild(opcao);
+    });
+}
+
+// Escolhe no select a opção igual ao valor salvo no banco.
+// Se o valor antigo não estiver na lista, ele é adicionado para não sumir.
+function definirSelect(select, valor) {
+
+    if (!valor) {
+        select.value = "";
+        return;
+    }
+
+    const existe = Array.from(select.options).some((o) => o.value === valor);
+
+    if (!existe) {
+        const opcao = document.createElement("option");
+        opcao.value = valor;
+        opcao.textContent = valor;
+        select.appendChild(opcao);
+    }
+
+    select.value = valor;
+}
+
+// Monta as opções assim que a página carrega
+preencherSelect(cargo, CARGOS);
+preencherSelect(localizacao, ESTADOS);
 
 // Formata o telefone com DDD
 function formatarTelefone(valor) {
@@ -93,8 +158,8 @@ onAuthStateChanged(auth, async (usuario) => {
             nome.value = dados.nome || "";
             email.value = dados.email || usuario.email || "";
             telefone.value = formatarTelefone(dados.telefone || "");
-            cargo.value = dados.cargo || "";
-            localizacao.value = dados.localizacao || "";
+            definirSelect(cargo, dados.cargo);
+            definirSelect(localizacao, dados.localizacao);
 
         } else {
             email.value = usuario.email || "";

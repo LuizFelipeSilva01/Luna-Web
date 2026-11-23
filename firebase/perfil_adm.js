@@ -33,7 +33,7 @@ onAuthStateChanged(auth, async (user) => {
     // Escrevendo na página
     escrever("topo-nome", nome);
     escrever("perfil-nome", nome);
-    escrever("topo-cargo", "Administrador");
+    escrever("topo-cargo", cargo);
     escrever("perfil-cargo", cargo);
     escrever("info-email", email);
     escrever("info-telefone", telefone);
