@@ -41,12 +41,6 @@ onAuthStateChanged(auth, async (user) => {
     escrever("info-localizacao", localizacao);
     escrever("info-membro", membroDesde);
 
-    // Foto: só troca se a conta tiver uma foto
-    if (user.photoURL) {
-      document.getElementById("topo-foto").src = user.photoURL;
-      document.getElementById("perfil-foto").src = user.photoURL;
-    }
-
   } catch (erro) {
     console.log("Erro ao carregar perfil:", erro);
     alert("Não foi possível carregar as informações do perfil.");

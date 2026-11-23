@@ -18,6 +18,7 @@
 
     <!-- Conectando o Firebase -->
     <script type="module" src="firebase/proteger.js"></script>
+    <script type="module" src="firebase/perfil_adm.js"></script>
     <script type="module" src="js/perfil.js"></script>
     <script src="js/menu.js" defer></script>
 </head>
@@ -41,8 +42,8 @@
     <a class="usuario-topo" href="perfil_adm.html">
         <img src="imagens/admin.png">
         <div>
-          <strong>Admin</strong><br>
-          <small>Administrator</small>
+          <strong id="topo-nome">Admin</strong><br>
+          <small id="topo-cargo">Administrador</small>
         </div>
     </a>
 
@@ -128,14 +129,8 @@
 
           <div class="campo">
             <label for="telefone">Telefone</label>
-            <input
-              type="tel"
-              id="telefone"
-              name="telefone"
-              placeholder="(XX) XXXXX-XXXX"
-              maxlength="15"
-              inputmode="numeric"
-            >
+            <input type="tel" id="telefone" name="telefone"
+              placeholder="(XX) XXXXX-XXXX" maxlength="15" inputmode="numeric">
           </div>
 
           <div class="campo">

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="styles.css" />
     <!-- conectando o firebase -->
     <script type="module" src="firebase/proteger.js"></script>
+    <script type="module" src="firebase/perfil_adm.js"></script>
     <script src="js/menu.js" defer></script>
 </head>
 
@@ -38,8 +40,8 @@
     <a class="usuario-topo" href="perfil_adm.html">
       <img src="imagens/admin.png">
       <div>
-        <strong>Admin</strong><br>
-        <small>Administrator</small>
+        <strong id="topo-nome">Admin</strong><br>
+        <small id="topo-cargo">Administrador</small>
       </div>
     </a>
 
